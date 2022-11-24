@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
     return (
-        <div className="w-screen lg:px-64 bg-base-300 shadow-lg">
+        <div className="w-screen lg:px-64 bg-base-300 shadow-md">
             <nav className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -155,8 +156,10 @@ const Header = () => {
                             tabIndex={0}
                             className="btn btn-ghost btn-circle avatar"
                         >
-                            <div className="w-10 rounded-full">
-                                {}
+                            <div className="text-2xl rounded-full">
+                                <FaUser></FaUser>
+                            </div>
+                            <div className="text-2xl rounded-full">
                                 <img src="" alt="" />
                             </div>
                         </label>
