@@ -1,52 +1,69 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+    FaFacebook,
+    FaInstagram,
+    FaTwitter,
+    FaWhatsapp,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 import icon from "../../../assets/icon.png";
 
 const Footer = () => {
     return (
         <div className="w-screen lg:px-64 bg-base-300 shadow-md">
             <div className=" bg-linear-pink-invert pb-12">
-                <div className="mx-auto container pt-20 lg:pt-72 flex flex-col items-center justify-center">
-                    <div>
+                <div className="mx-auto container flex flex-col items-center justify-center">
+                    <div className="pt-20 lg:pt-72">
                         <img src={icon} alt="" />
                     </div>
-                    <div className="text-black flex flex-col md:items-center f-f-l pt-3">
+                    <div className="text-black flex flex-col items-center f-f-l pt-3">
                         <h1 className="text-2xl font-black">
-                            Build. Review. Ship.
+                            Sell. Buy. Ship.
                         </h1>
-                        <div className="md:flex items-center mt-5 md:mt-10 text-base text-color f-f-l">
-                            <h2 className=" md:mr-6 pb-4 md:py-0 cursor-pointer">
-                                Download Now
-                            </h2>
-                            <h2 className="cursor-pointer">License</h2>
+
+                        <div className="flex mt-5 md:mt-10 justify-center items-center text-base f-f-l w-full md:w-auto space-x-6 ">
+                            <Link className="text-stone-700 hover:text-orange-700 w-6">
+                                <FaTwitter className="text-2xl font-bold"></FaTwitter>
+                            </Link>
+                            <Link className="text-stone-700 hover:text-orange-700 w-6">
+                                <FaFacebook className="text-2xl font-bold"></FaFacebook>
+                            </Link>
+                            <Link className="text-stone-900 hover:text-orange-700 w-6">
+                                <FaInstagram className="text-2xl font-bold"></FaInstagram>
+                            </Link>
+                            <Link className="text-stone-700 hover:text-orange-700 w-6">
+                                <FaWhatsapp className="text-2xl font-bold"></FaWhatsapp>
+                            </Link>
                         </div>
-                        <div className="my-6 text-base text-color f-f-l">
-                            <ul className="md:flex items-center">
-                                <li className=" md:mr-6 cursor-pointer pt-4 lg:py-0">
-                                    About
+                        <div className="my-6 font-bold text-base text-color f-f-l">
+                            <ul className="md:flex justify-center items-center">
+                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>About</Link>
                                 </li>
-                                <li className=" md:mr-6 cursor-pointer pt-4 lg:py-0">
-                                    Features
+                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>Contact</Link>
+                                </li>                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>Pricing</Link>
                                 </li>
-                                <li className=" md:mr-6 cursor-pointer pt-4 lg:py-0">
-                                    Pricing
+                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>FAQ</Link>
                                 </li>
-                                <li className=" md:mr-6 cursor-pointer pt-4 lg:py-0">
-                                    Careers
+                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>Help</Link>
                                 </li>
-                                <li className=" md:mr-6 cursor-pointer pt-4 lg:py-0">
-                                    Help
+                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>Privacy Policy</Link>
                                 </li>
-                                <li className="cursor-pointer pt-4 lg:py-0">
-                                    Privacy Policy
+                                <li className="text-center px-3 pt-4 lg:py-0">
+                                    <Link>Terms of Service</Link>
                                 </li>
                             </ul>
                         </div>
-                        <div className="text-sm text-color mb-10 f-f-l">
-                            <p> © 2020 Prodify. All rights reserved</p>
+                        <div className="text-sm font-semibold mb-10">
+                            <p> © 2022 trendyResale. All rights reserved.</p>
                         </div>
                     </div>
-                    <div className="w-9/12  h-0.5 bg-gray-100 rounded-full" />
+                    <div className="w-full  h-0.5 bg-gray-100 rounded-full" />
                     <div className="flex justify-between items-center pt-12">
                         <div className="mr-4">
                             <svg
@@ -55,6 +72,7 @@ const Footer = () => {
                                 height={40}
                                 viewBox="0 0 135 40"
                                 fill="none"
+                                className="cursor-pointer"
                             >
                                 <g clipPath="url(#clip0)">
                                     <path
@@ -176,6 +194,7 @@ const Footer = () => {
                                 height={40}
                                 viewBox="0 0 135 40"
                                 fill="none"
+                                className="cursor-pointer"
                             >
                                 <path
                                     d="M130 0H5C2.23858 0 0 2.23858 0 5V35C0 37.7614 2.23858 40 5 40H130C132.761 40 135 37.7614 135 35V5C135 2.23858 132.761 0 130 0Z"

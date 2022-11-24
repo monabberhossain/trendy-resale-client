@@ -8,7 +8,10 @@ const Header = () => {
             <nav className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                        <label
+                            tabIndex={0}
+                            className="btn btn-ghost hover:bg-orange-600 lg:hidden mr-1"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -26,16 +29,13 @@ const Header = () => {
                         </label>
                         <ul
                             tabIndex={1}
-                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52"
                         >
-                            <li>
-                                <Link>Item 1</Link>
-                            </li>
                             <li tabIndex={1}>
-                                <Link className="justify-between">
-                                    Parent
+                                <Link className="justify-between rounded-lg hover:bg-orange-600 hover:text-white">
+                                    Products
                                     <svg
-                                        className="fill-current"
+                                        className="fill-orange-600"
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
                                         height="24"
@@ -44,39 +44,47 @@ const Header = () => {
                                         <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                                     </svg>
                                 </Link>
-                                <ul className="p-2">
+                                <ul className="rounded-box bg-base-300 shadow p-2">
                                     <li>
-                                        <Link>Submenu 1</Link>
+                                        <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                            Category 1
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Link>Submenu 2</Link>
+                                        <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                            Category 2
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                            Category 3
+                                        </Link>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <Link>Item 3</Link>
+                                <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                    Blog
+                                </Link>
                             </li>
                         </ul>
                     </div>
-                    <Link className="b-2 btn normal-case text-2xl ">
-                        <span className="tracking-tighter font-bold">
+                    <Link className="b-2 px-2 btn normal-case text-xl md:text-2xl">
+                        <span className="tracking-tighter font-semibold md:font-bold">
                             trendy
                         </span>
-                        <strong className="text-4xl pb-2 text-orange-600">
+                        <strong className="text-4xl pb-3 md:pb-2 text-orange-600">
                             Resale
                         </strong>
                     </Link>
                 </div>
                 <div className="navbar-start hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                        <li>
-                            <Link>Item 1</Link>
-                        </li>
                         <li tabIndex={2}>
-                            <Link>
-                                Parent
+                            <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                Products
                                 <svg
-                                    className="fill-current"
+                                    className="fill-orange-600"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="20"
                                     height="20"
@@ -85,17 +93,28 @@ const Header = () => {
                                     <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                                 </svg>
                             </Link>
-                            <ul className="p-2">
+                            <ul className="p-1">
                                 <li>
-                                    <Link>Submenu 1</Link>
+                                    <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                        Category 1
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link>Submenu 2</Link>
+                                    <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                        Category 2
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                        Category 3
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <Link>Item 3</Link>
+                            <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                Blog
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -110,7 +129,7 @@ const Header = () => {
                     <div className="dropdown dropdown-end pl-2">
                         <label
                             tabIndex={0}
-                            className="btn btn-ghost btn-circle"
+                            className="btn btn-ghost hover:bg-orange-600 btn-circle"
                         >
                             <div className="indicator">
                                 <svg
@@ -127,7 +146,7 @@ const Header = () => {
                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                     />
                                 </svg>
-                                <span className="badge badge-sm indicator-item">
+                                <span className="badge badge-sm bg-orange-600 indicator-item border-none h-5">
                                     8
                                 </span>
                             </div>
@@ -154,7 +173,7 @@ const Header = () => {
                     <div className="dropdown dropdown-end pl-2">
                         <label
                             tabIndex={0}
-                            className="btn btn-ghost btn-circle avatar"
+                            className="btn btn-ghost hover:bg-orange-600 btn-circle avatar"
                         >
                             <div className="text-2xl rounded-full">
                                 <FaUser></FaUser>
@@ -165,19 +184,23 @@ const Header = () => {
                         </label>
                         <ul
                             tabIndex={0}
-                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52"
                         >
                             <li>
-                                <Link className="justify-between">
+                                <Link className="justify-between rounded-lg hover:bg-orange-600 hover:text-white">
                                     Profile
                                     <span className="badge">New</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link>Settings</Link>
+                                <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                    Dashboard
+                                </Link>
                             </li>
                             <li>
-                                <Link>Logout</Link>
+                                <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                    Logout
+                                </Link>
                             </li>
                         </ul>
                     </div>
