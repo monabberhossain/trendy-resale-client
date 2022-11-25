@@ -1,16 +1,11 @@
 import React from "react";
-import {
-    FaFacebook,
-    FaInstagram,
-    FaTwitter,
-    FaWhatsapp,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import icon from "../../../assets/icon.png";
+import icon from "../../../assets/icon/icon.png";
 
 const Footer = () => {
     return (
-        <div className="w-screen lg:px-64 bg-base-300 shadow-md">
+        <div className="w-screen lg:px-[12%] bg-base-300 shadow-md">
             <div className=" bg-linear-pink-invert pb-12">
                 <div className="mx-auto container flex flex-col items-center justify-center">
                     <div className="pt-20 lg:pt-72">
@@ -42,7 +37,8 @@ const Footer = () => {
                                 </li>
                                 <li className="text-center px-3 pt-4 lg:py-0">
                                     <Link>Contact</Link>
-                                </li>                                <li className="text-center px-3 pt-4 lg:py-0">
+                                </li>{" "}
+                                <li className="text-center px-3 pt-4 lg:py-0">
                                     <Link>Pricing</Link>
                                 </li>
                                 <li className="text-center px-3 pt-4 lg:py-0">

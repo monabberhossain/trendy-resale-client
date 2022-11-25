@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 
 const Header = () => {
     return (
-        <div className="w-screen lg:px-64 bg-base-300 shadow-md">
+        <div className="w-screen lg:px-[12%] bg-base-300 shadow-md">
             <nav className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -32,7 +32,7 @@ const Header = () => {
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52"
                         >
                             <li tabIndex={1}>
-                                <Link className="justify-between rounded-lg hover:bg-orange-600 hover:text-white">
+                                <Link className="justify-between font-semibold rounded-lg text-stone-900 hover:bg-orange-600 hover:text-white">
                                     Products
                                     <svg
                                         className="fill-orange-600"
@@ -46,24 +46,24 @@ const Header = () => {
                                 </Link>
                                 <ul className="rounded-box bg-base-300 shadow p-2">
                                     <li>
-                                        <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                        <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                             Category 1
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                        <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                             Category 2
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                        <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                             Category 3
                                         </Link>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                     Blog
                                 </Link>
                             </li>
@@ -81,7 +81,7 @@ const Header = () => {
                 <div className="navbar-start hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         <li tabIndex={2}>
-                            <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                            <Link className="rounded-lg font-semibold text-lg text-stone-900 hover:bg-orange-600 hover:text-white">
                                 Products
                                 <svg
                                     className="fill-orange-600"
@@ -93,26 +93,26 @@ const Header = () => {
                                     <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                                 </svg>
                             </Link>
-                            <ul className="p-1">
+                            <ul className="p-1 shadow bg-base-200 rounded-box">
                                 <li>
-                                    <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                    <Link className="rounded-lg  font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                         Category 1
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                    <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                         Category 2
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                    <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                         Category 3
                                     </Link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                            <Link className="rounded-lg text-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                 Blog
                             </Link>
                         </li>
@@ -123,7 +123,7 @@ const Header = () => {
                         <input
                             type="text"
                             placeholder="Search"
-                            className="input input-bordered"
+                            className="input input-bordered border-orange-600"
                         />
                     </div>
                     <div className="dropdown dropdown-end pl-2">
