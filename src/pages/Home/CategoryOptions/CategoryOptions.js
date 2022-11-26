@@ -60,36 +60,24 @@ const CategoryOptions = () => {
                             </div>
                             <div className="relative group flex justify-center items-center h-full w-full mt-4 md:hidden md:mt-8 lg:hidden">
                                 <img
-                                    className="object-center object-cover h-full w-full hidden md:block"
-                                    src=""
+                                    className="object-center object-cover h-full w-full"
+                                    src={catDigital}
                                     alt=""
                                 />
-                                <img
-                                    className="object-center object-cover h-full w-full md:hidden"
-                                    src="https://i.ibb.co/sQgHwHn/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
-                                    alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2"
-                                />
-                                <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                                    Women
-                                </button>
-                                <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50" />
+                                <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
+                                    Digital Watch
+                                </button>{" "}
                             </div>
                         </div>
                         <div className="relative group hidden md:flex justify-center items-center h-full w-full mt-4 md:mt-8 lg:hidden">
                             <img
-                                className="object-center object-cover h-full w-full hidden md:block"
-                                src=""
+                                className="object-center object-cover h-full w-full"
+                                src={catDigital}
                                 alt=""
                             />
-                            <img
-                                className="object-center object-cover h-full w-full sm:hidden"
-                                src="https://i.ibb.co/sQgHwHn/olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-1.png"
-                                alt="olive-tatiane-Im-Ez-F9-B91-Mk-unsplash-2"
-                            />
-                            <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                                Women
+                            <button className="bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
+                                Digital Watch
                             </button>
-                            <div className="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50" />
                         </div>
                     </div>
                 </div>
