@@ -8,7 +8,7 @@ const Banner = () => {
             <div className="py-16 lg:py-24">
                 <div className="">
                     <div className="flex flex-col-reverse md:flex-col-reverse lg:flex-row justify-center px-8 lg:px-0 gap-8">
-                        <div className="mt-6 lg:mt-0">
+                        <div className="mt-6 lg:mt-10">
                             <h1 className="text-stone-700 text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold leading-tight">
                                 Start buying/selling
                                 <br />
@@ -22,7 +22,7 @@ const Banner = () => {
                             </p>
                             <ButtonPrimary>Get Started</ButtonPrimary>
                         </div>
-                        <div className="">
+                        <div className="mt-10">
                             <img className="" src={banner} alt="" />
                         </div>
                     </div>

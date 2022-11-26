@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 
 const Header = () => {
     return (
-        <div className="w-screen lg:px-[12%] bg-base-300 shadow-md">
+        <div className="w-screen fixed lg:px-[12%] bg-base-200 shadow z-50">
             <nav className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">

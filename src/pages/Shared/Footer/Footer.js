@@ -5,15 +5,15 @@ import icon from "../../../assets/icon/icon.png";
 
 const Footer = () => {
     return (
-        <div className="w-screen lg:px-[12%] bg-base-300 shadow-md">
+        <div className="w-screen lg:px-[12%] bg-base-200 shadow-md">
             <div className=" bg-linear-pink-invert pb-12">
                 <div className="mx-auto container flex flex-col items-center justify-center">
-                    <div className="pt-20 lg:pt-72">
+                    <div className="pt-20 lg:pt-40">
                         <img src={icon} alt="" />
                     </div>
                     <div className="text-black flex flex-col items-center f-f-l pt-3">
                         <h1 className="text-2xl font-black">
-                            Sell. Buy. Ship.
+                            Sell. Buy. Enjoy.
                         </h1>
 
                         <div className="flex mt-5 md:mt-10 justify-center items-center text-base f-f-l w-full md:w-auto space-x-6 ">
