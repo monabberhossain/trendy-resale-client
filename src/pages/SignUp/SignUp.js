@@ -14,7 +14,7 @@ const SignUp = () => {
 
     const [signupError, setSignUpError] = useState("");
     const { createUser, updateUserProfile } = useContext(AuthContext);
-    const [createdUserEmail, setCreatedUserEmail] = useState();
+    const [createdUserEmail, setCreatedUserEmail] = useState("s");
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
@@ -26,15 +26,16 @@ const SignUp = () => {
         setSignUpError("");
         createUser(data.email, data.password)
             .then((result) => {
-                const user = result.user;
-                console.log(user);
+                // const user = result.user;
+                // console.log(user);
                 toast.success("User Created Successfully.");
                 const userProfile = {
                     displayName: data.name,
+                    role: data.role
                 };
                 updateUserProfile(userProfile)
                     .then(() => {
-                        saveUserToDB(data.name, data.email);
+                        saveUserToDB(data.name, data.role, data.email);
                     })
                     .catch((error) => console.log(error));
             })
@@ -44,11 +45,11 @@ const SignUp = () => {
             });
     };
 
-    const saveUserToDB = (name, email) => {
-        const user = { name, email };
+    const saveUserToDB = (name, role, email) => {
+        const user = { name, role, email };
 
         fetch(
-            "https://doctors-portal-server-monabberhossain.vercel.app/users",
+            "https://localhost/5000/users",
             {
                 method: "POST",
                 headers: {
@@ -61,7 +62,7 @@ const SignUp = () => {
             .then((data) => {
                 setCreatedUserEmail(email);
             });
-    };
+    };    
 
     return (
         <div className="flex justify-center items-center py-24">
@@ -138,6 +139,20 @@ const SignUp = () => {
                                 </span>
                             </label>
                         )}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">User Role</span>
+                        </label>
+                        <select
+                            {...register("role", {
+                                required: "User Role is required",
+                            })}
+                            className="select select-bordered w-full max-w-xs"
+                        >
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
                     </div>
                     {signupError && (
                         <label className="label">

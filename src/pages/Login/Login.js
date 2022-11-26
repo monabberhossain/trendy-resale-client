@@ -98,7 +98,10 @@ const Login = () => {
                         )}
                         <label className="label">
                             <span className="label-text-alt">
-                                <Link className=" text-secondary" to="/">
+                                <Link
+                                    className="font-semibold text-orange-600"
+                                    to="/"
+                                >
                                     Forgot Password?
                                 </Link>
                             </span>
@@ -117,9 +120,9 @@ const Login = () => {
                         type="submit"
                     />
                 </form>
-                <p className="text-xs mt-4">
-                    New to Doctors Portal?
-                    <Link className="ml-1 text-secondary" to="/signup">
+                <p className="text-xs mt-4 font-semibold">
+                    New to Trendy Resale?
+                    <Link className="ml-1 text-orange-600" to="/signup">
                         Create New Account
                     </Link>
                 </p>
