@@ -69,7 +69,10 @@ const Header = () => {
                             </li>
                         </ul>
                     </div>
-                    <Link className="b-2 px-2 btn normal-case text-xl md:text-2xl">
+                    <Link
+                        to="/"
+                        className="b-2 px-2 btn normal-case text-xl md:text-2xl"
+                    >
                         <span className="tracking-tighter font-semibold md:font-bold">
                             trendy
                         </span>
@@ -193,7 +196,10 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link className="rounded-lg hover:bg-orange-600 hover:text-white">
+                                <Link
+                                    to="/dashboard"
+                                    className="rounded-lg hover:bg-orange-600 hover:text-white"
+                                >
                                     Dashboard
                                 </Link>
                             </li>
