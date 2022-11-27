@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -13,25 +14,28 @@ const SignUp = () => {
     } = useForm();
 
     const [signupError, setSignUpError] = useState("");
-    const { createUser, updateUserProfile } = useContext(AuthContext);
-    const [createdUserEmail, setCreatedUserEmail] = useState("s");
-    const [token] = useToken(createdUserEmail);
+    const { createUser, updateUserProfile, loginWithGoogle } =
+        useContext(AuthContext);
+    // const [createdUserEmail, setCreatedUserEmail] = useState("s");
+    // const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
-    if (token) {
-        navigate("/");
-    }
+    const googleProvider = new GoogleAuthProvider();
+
+    // if (token) {
+    //     navigate("/");
+    // }
 
     const handleSignUp = (data) => {
         setSignUpError("");
         createUser(data.email, data.password)
             .then((result) => {
-                // const user = result.user;
-                // console.log(user);
+                const user = result.user;
+                console.log(user);
                 toast.success("User Created Successfully.");
                 const userProfile = {
                     displayName: data.name,
-                    role: data.role
+                    role: data.role,
                 };
                 updateUserProfile(userProfile)
                     .then(() => {
@@ -45,24 +49,36 @@ const SignUp = () => {
             });
     };
 
+    const handleSignInWithGoogle = () => {
+        setSignUpError("");
+        loginWithGoogle(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                const role = "Buyer";
+                saveUserToDB(user.displayName, role, user.email);
+                console.log(user);
+            })
+            .catch((error) => {
+                toast.message("Email is in use.");
+                setSignUpError(error.message);
+            });
+    };
+
     const saveUserToDB = (name, role, email) => {
         const user = { name, role, email };
 
-        fetch(
-            "https://localhost/5000/users",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(user),
-            }
-        )
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+        })
             .then((res) => res.json())
             .then((data) => {
-                setCreatedUserEmail(email);
+                // setCreatedUserEmail(email);
             });
-    };    
+    };
 
     return (
         <div className="flex justify-center items-center py-24">
@@ -150,8 +166,8 @@ const SignUp = () => {
                             })}
                             className="select select-bordered w-full max-w-xs"
                         >
-                            <option value="buyer">Buyer</option>
-                            <option value="seller">Seller</option>
+                            <option value="Buyer">Buyer</option>
+                            <option value="Seller">Seller</option>
                         </select>
                     </div>
                     {signupError && (
@@ -174,7 +190,10 @@ const SignUp = () => {
                     </Link>
                 </p>
                 <div className="divider my-6">OR</div>
-                <button className="btn btn-accent btn-outline w-full">
+                <button
+                    onClick={handleSignInWithGoogle}
+                    className="btn btn-accent btn-outline w-full"
+                >
                     Continue With Google
                 </button>
             </div>
