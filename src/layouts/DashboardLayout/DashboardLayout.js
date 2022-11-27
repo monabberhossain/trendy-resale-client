@@ -32,21 +32,43 @@ const DashboardLayout = () => {
                     ></label>
                     <ul className="menu mt-4 p-4 w-80 text-base-content">
                         <li className="bg-indigo-500 rounded mb-4">
-                            <h2 className="text-white font-bold text-xl">Dashboard</h2>
+                            <h2 className="text-white font-bold text-xl">
+                                Dashboard
+                            </h2>
                         </li>
                         <li>
-                            <Link to="/dashboard">My Appointments</Link>
+                            <Link to="/dashboard">My Orders</Link>
                         </li>
                         <li>
-                            <Link to="/dashboard/allusers">All Users</Link>
+                            <Link to="/dashboard/addproduct">
+                                Add A Product
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/myproducts">My Products</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/mybuyers">My Buyers</Link>
                         </li>
                         <li>
                             <Link to="/dashboard/addcategory">
-                                Add A Category
+                                Add Category
                             </Link>
                         </li>
                         <li>
                             <Link to="/dashboard/categories">Categories</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/buyers">Buyers</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/sellers">Sellers</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/orders">Orders</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/products">Products</Link>
                         </li>
                     </ul>
                 </div>
