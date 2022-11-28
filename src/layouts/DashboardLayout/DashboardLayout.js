@@ -1,12 +1,16 @@
 // import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-// import { AuthContext } from "../../contexts/AuthProvider";
-// import useAdmin from "../../hooks/useAdmin";
+import { AuthContext } from "../../contexts/AuthProvider";
+import useAdmin from "../../hooks/useAdmin";
+import useSeller from "../../hooks/useSeller";
 import Header from "../../pages/Shared/Header/Header";
 
 const DashboardLayout = () => {
-    // const { user } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin(user?.email);
+    const { user } = useContext(AuthContext);
+    console.log(user);
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
     return (
         <div>
             <Header></Header>
@@ -39,37 +43,58 @@ const DashboardLayout = () => {
                         <li>
                             <Link to="/dashboard">My Orders</Link>
                         </li>
-                        <li>
-                            <Link to="/dashboard/addproduct">
-                                Add A Product
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/myproducts">My Products</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/mybuyers">My Buyers</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/addcategory">
-                                Add Category
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/categories">Categories</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/buyers">Buyers</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/sellers">Sellers</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/orders">Orders</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/products">Products</Link>
-                        </li>
+                        {(isAdmin || isSeller) && (
+                            <>
+                                <li>
+                                    <Link to="/dashboard/addproduct">
+                                        Add A Product
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/myproducts">
+                                        My Products
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/mybuyers">
+                                        My Buyers
+                                    </Link>
+                                </li>
+                            </>
+                        )}
+                        {isAdmin && (
+                            <>
+                                <li>
+                                    <Link to="/dashboard/addcategory">
+                                        Add Category
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/categories">
+                                        Categories
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/buyers">Buyers</Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/sellers">Sellers</Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/orders">Orders</Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/products">
+                                        Products
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/allusers">
+                                        All Users
+                                    </Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

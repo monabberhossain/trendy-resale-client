@@ -1,5 +1,7 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
@@ -11,7 +13,7 @@ const Login = () => {
         handleSubmit,
     } = useForm();
 
-    const { login } = useContext(AuthContext);
+    const { login, loginWithGoogle } = useContext(AuthContext);
 
     const [loginError, setLoginError] = useState("");
     const [loginUserEmail, setLoginUserEmail] = useState("");
@@ -19,6 +21,8 @@ const Login = () => {
     const [token] = useToken(loginUserEmail);
     const location = useLocation();
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider();
 
     const from = location.state?.from?.pathname || "/";
 
@@ -39,7 +43,41 @@ const Login = () => {
                 console.log(error.message);
                 setLoginError(error.message);
             });
+    };    
+
+    const handleSignInWithGoogle = () => {
+        setLoginError("");
+        loginWithGoogle(googleProvider)
+            .then((result) => {
+                const user = result.user;                
+                setLoginUserEmail(user.email);
+                const role = "Buyer";
+                saveUserToDB(user.displayName, role, user.email);
+                console.log(user);
+            })
+            .catch((error) => {
+                toast.message("Email is in use.");
+                setLoginError(error.message);
+            });
     };
+
+    const saveUserToDB = (name, role, email) => {
+        const user = { name, role, email };
+
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setLoginUserEmail(email);
+            });
+    };
+
     return (
         <div className="flex justify-center items-center py-24">
             <div className="form-control w-full max-w-xs bg-base-100 rounded-xl shadow-xl p-8">
@@ -127,7 +165,10 @@ const Login = () => {
                     </Link>
                 </p>
                 <div className="divider my-6">OR</div>
-                <button className="btn btn-accent btn-outline w-full">
+                <button
+                    onClick={handleSignInWithGoogle}
+                    className="btn btn-accent btn-outline w-full"
+                >
                     Continue With Google
                 </button>
             </div>

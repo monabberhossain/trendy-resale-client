@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Categories = () => {
     return (
-        <div>
-            <h2>Categories</h2>
+        <div className="mt-6">
+            <h2 className="text-3xl font-semibold">List of Categories</h2>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
+import { FaIdCard, FaSignOutAlt, FaUser, FaUserEdit } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Header = () => {
@@ -139,17 +139,6 @@ const Header = () => {
                     </div>
                     {user?.uid ? (
                         <>
-                            <div className="ml-4">
-                                <Link
-                                    className="btn btn-outline hover:border-orange-600 rounded-lg text-lg font-semibold md:font-bold text-orange-600 hover:bg-orange-600"
-                                    to="/login"
-                                >
-                                    Login
-                                </Link>
-                            </div>
-                        </>
-                    ) : (
-                        <>
                             <div className="dropdown dropdown-end pl-2">
                                 <label
                                     tabIndex={0}
@@ -199,12 +188,15 @@ const Header = () => {
                                     tabIndex={0}
                                     className="btn btn-ghost hover:bg-orange-600 btn-circle avatar"
                                 >
-                                    <div className="text-2xl rounded-full">
-                                        <FaUser></FaUser>
-                                    </div>
-                                    <div className="text-2xl rounded-full">
-                                        <img src="" alt="" />
-                                    </div>
+                                    {user?.photoURL ? (
+                                        <div className="text-2xl rounded-full">
+                                            <img src={user.photoURL} alt="" />
+                                        </div>
+                                    ) : (
+                                        <div className="text-2xl rounded-full">
+                                            <FaUser></FaUser>
+                                        </div>
+                                    )}
                                 </label>
                                 <ul
                                     tabIndex={0}
@@ -212,27 +204,46 @@ const Header = () => {
                                 >
                                     <li>
                                         <Link className="justify-between rounded-lg hover:bg-orange-600 hover:text-white">
-                                            Profile
-                                            <span className="badge">New</span>
+                                            <span>{user.displayName}</span>
+                                            <span>
+                                                <FaUserEdit></FaUserEdit>
+                                            </span>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link
                                             to="/dashboard"
-                                            className="rounded-lg hover:bg-orange-600 hover:text-white"
+                                            className="justify-between rounded-lg hover:bg-orange-600 hover:text-white"
                                         >
-                                            Dashboard
+                                            <span>Dashboard</span>
+                                            <span>
+                                                <FaIdCard></FaIdCard>
+                                            </span>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link
                                             onClick={handleLogOut}
-                                            className="rounded-lg hover:bg-orange-600 hover:text-white"
+                                            className="justify-between rounded-lg hover:bg-orange-600 hover:text-white"
                                         >
-                                            Logout
+                                            <span>Logout</span>
+                                            <span>
+                                                <FaSignOutAlt></FaSignOutAlt>
+                                            </span>
                                         </Link>
                                     </li>
                                 </ul>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="ml-4">
+                                <Link
+                                    className="btn btn-outline hover:border-orange-600 rounded-lg text-lg font-semibold md:font-bold text-orange-600 hover:bg-orange-600"
+                                    to="/login"
+                                >
+                                    Login
+                                </Link>
                             </div>
                         </>
                     )}

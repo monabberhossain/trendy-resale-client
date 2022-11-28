@@ -16,15 +16,16 @@ const SignUp = () => {
     const [signupError, setSignUpError] = useState("");
     const { createUser, updateUserProfile, loginWithGoogle } =
         useContext(AuthContext);
-    // const [createdUserEmail, setCreatedUserEmail] = useState("s");
-    // const [token] = useToken(createdUserEmail);
+    const [createdUserEmail, setCreatedUserEmail] = useState();
+    const [savedUser, setSavedUser] = useState();
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
 
-    // if (token) {
-    //     navigate("/");
-    // }
+    if (token) {
+        navigate("/");
+    }
 
     const handleSignUp = (data) => {
         setSignUpError("");
@@ -55,7 +56,13 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 const role = "Buyer";
-                saveUserToDB(user.displayName, role, user.email);
+                if(savedUser){
+                   toast.message("Email is in use."); 
+                }
+                else{
+                    saveUserToDB(user.displayName, role, user.email);
+                    setSavedUser(user.email);
+                }
                 console.log(user);
             })
             .catch((error) => {
@@ -76,7 +83,7 @@ const SignUp = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                // setCreatedUserEmail(email);
+                setCreatedUserEmail(email);
             });
     };
 
