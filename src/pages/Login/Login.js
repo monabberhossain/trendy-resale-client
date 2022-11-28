@@ -17,6 +17,7 @@ const Login = () => {
 
     const [loginError, setLoginError] = useState("");
     const [loginUserEmail, setLoginUserEmail] = useState("");
+    const [savedUser, setSavedUser] = useState();
 
     const [token] = useToken(loginUserEmail);
     const location = useLocation();
@@ -52,7 +53,12 @@ const Login = () => {
                 const user = result.user;                
                 setLoginUserEmail(user.email);
                 const role = "Buyer";
-                saveUserToDB(user.displayName, role, user.email);
+                if (savedUser) {
+                    toast.message("Email is in use.");
+                } else {
+                    saveUserToDB(user.displayName, role, user.email);
+                    setSavedUser(user.email);
+                }
                 console.log(user);
             })
             .catch((error) => {
@@ -67,7 +73,6 @@ const Login = () => {
         fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
-                authorization: `bearer ${localStorage.getItem("accessToken")}`,
                 "content-type": "application/json",
             },
             body: JSON.stringify(user),

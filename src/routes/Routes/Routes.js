@@ -4,7 +4,7 @@ import Main from "../../layouts/Main/Main";
 import AddCategory from "../../pages/Dashboard/AddCategory/AddCategory";
 import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
 import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
-import Buyers from "../../pages/Dashboard/AllUsers/AllUsers";
+import Buyers from "../../pages/Dashboard/Buyers/Buyers";
 import Categories from "../../pages/Dashboard/Categories/Categories";
 import MyBuyers from "../../pages/Dashboard/MyBuyers/MyBuyers";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
@@ -125,8 +125,9 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/allusers",
                 element: (
-                    
+                    <AdminRoutes>
                         <AllUsers></AllUsers>
+                    </AdminRoutes>
                 ),
             },
         ],

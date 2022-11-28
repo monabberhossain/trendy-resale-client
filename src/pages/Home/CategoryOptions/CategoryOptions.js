@@ -1,8 +1,8 @@
 import React from "react";
-import catDigital from "../../../assets/category/catDigi.png";
-import catBand from "../../../assets/category/catBand.png";
-import catWatch from "../../../assets/category/catWatch.png";
-import catMechanical from "../../../assets/category/catMechanical.png";
+import catDigital from "../../../assets/category/catDigitalWatch.png";
+import catBand from "../../../assets/category/catSmartBand.png";
+import catWatch from "../../../assets/category/catSmartWatch.png";
+import catMechanical from "../../../assets/category/catMechanicalWatch.png";
 
 const CategoryOptions = () => {
     return (
@@ -66,7 +66,7 @@ const CategoryOptions = () => {
                                 />
                                 <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
                                     Digital Watch
-                                </button>{" "}
+                                </button>
                             </div>
                         </div>
                         <div className="relative group hidden md:flex justify-center items-center h-full w-full mt-4 md:mt-8 lg:hidden">

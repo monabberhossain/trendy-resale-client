@@ -17,7 +17,6 @@ const SignUp = () => {
     const { createUser, updateUserProfile, loginWithGoogle } =
         useContext(AuthContext);
     const [createdUserEmail, setCreatedUserEmail] = useState();
-    const [savedUser, setSavedUser] = useState();
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
@@ -50,19 +49,13 @@ const SignUp = () => {
             });
     };
 
-    const handleSignInWithGoogle = () => {
+    const handleSignInWithGoogle = (savedData) => {
         setSignUpError("");
         loginWithGoogle(googleProvider)
             .then((result) => {
                 const user = result.user;
                 const role = "Buyer";
-                if(savedUser){
-                   toast.message("Email is in use."); 
-                }
-                else{
-                    saveUserToDB(user.displayName, role, user.email);
-                    setSavedUser(user.email);
-                }
+                saveUserToDB(user.displayName, role, user.email);
                 console.log(user);
             })
             .catch((error) => {
@@ -85,6 +78,34 @@ const SignUp = () => {
             .then((data) => {
                 setCreatedUserEmail(email);
             });
+
+        // if (role === "Seller") {
+        //     fetch("http://localhost:5000/sellers", {
+        //         method: "POST",
+        //         headers: {
+        //             "content-type": "application/json",
+        //         },
+        //         body: JSON.stringify(user),
+        //     })
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             setCreatedUserEmail(email);
+        //         });
+        // }
+
+        // if (role === "Buyer") {
+        //     fetch("http://localhost:5000/buyers", {
+        //         method: "POST",
+        //         headers: {
+        //             "content-type": "application/json",
+        //         },
+        //         body: JSON.stringify(user),
+        //     })
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             setCreatedUserEmail(email);
+        //         });
+        // }
     };
 
     return (

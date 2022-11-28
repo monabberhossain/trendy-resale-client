@@ -1,12 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import toast from 'react-hot-toast';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import toast from "react-hot-toast";
 
-const AllUsers = () => {
+const Buyers = () => {
     const { data: users = [], refetch } = useQuery({
-        queryKey: ["users"],
+        queryKey: ["buyers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/users");
+            const res = await fetch("http://localhost:5000/buyers");
             const data = await res.json();
             return data;
         },
@@ -38,14 +38,14 @@ const AllUsers = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.deletedCount > 0) {
-                    toast.success(`User Deleted Successfully!`);
+                    toast.success(`Buyer Deleted Successfully!`);
                     refetch();
                 }
             });
     };
     return (
         <div>
-            <h2 className="text-3xl my-6">All Users</h2>
+            <h2 className="text-3xl my-6">List of Buyers</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -61,7 +61,7 @@ const AllUsers = () => {
                     <tbody>
                         {users.map((user, index) => (
                             <tr key={user._id}>
-                                <th>{index + 1}</th>                            
+                                <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
@@ -96,4 +96,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default Buyers;
