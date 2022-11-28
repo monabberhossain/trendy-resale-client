@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import toast from 'react-hot-toast';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import toast from "react-hot-toast";
 
 const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
@@ -45,7 +45,9 @@ const AllUsers = () => {
     };
     return (
         <div>
-            <h2 className="text-3xl my-6">All Users</h2>
+            <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2 mb-4">
+                All Users
+            </h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -61,7 +63,7 @@ const AllUsers = () => {
                     <tbody>
                         {users.map((user, index) => (
                             <tr key={user._id}>
-                                <th>{index + 1}</th>                            
+                                <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>

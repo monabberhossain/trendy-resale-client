@@ -29,7 +29,7 @@ const AddCategory = () => {
                     image: imgData.data.url,
                 };
 
-                fetch("https://localhost/5000/categories", {
+                fetch("https://localhost:5000/categories", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -49,7 +49,7 @@ const AddCategory = () => {
 
     return (
         <div className="">
-            <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2">
+            <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2 mb-4">
                 Add A Category
             </h2>
             <div className="form-control w-full max-w-xs bg-base-100 rounded-xl shadow-xl p-8">

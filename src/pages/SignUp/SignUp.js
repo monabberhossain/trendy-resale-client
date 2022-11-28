@@ -78,34 +78,6 @@ const SignUp = () => {
             .then((data) => {
                 setCreatedUserEmail(email);
             });
-
-        // if (role === "Seller") {
-        //     fetch("http://localhost:5000/sellers", {
-        //         method: "POST",
-        //         headers: {
-        //             "content-type": "application/json",
-        //         },
-        //         body: JSON.stringify(user),
-        //     })
-        //         .then((res) => res.json())
-        //         .then((data) => {
-        //             setCreatedUserEmail(email);
-        //         });
-        // }
-
-        // if (role === "Buyer") {
-        //     fetch("http://localhost:5000/buyers", {
-        //         method: "POST",
-        //         headers: {
-        //             "content-type": "application/json",
-        //         },
-        //         body: JSON.stringify(user),
-        //     })
-        //         .then((res) => res.json())
-        //         .then((data) => {
-        //             setCreatedUserEmail(email);
-        //         });
-        // }
     };
 
     return (

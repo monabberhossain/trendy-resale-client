@@ -45,7 +45,9 @@ const Sellers = () => {
     };
     return (
         <div>
-            <h2 className="text-3xl my-6">List of Sellers</h2>
+            <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2 mb-4">
+                List of Sellers
+            </h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
