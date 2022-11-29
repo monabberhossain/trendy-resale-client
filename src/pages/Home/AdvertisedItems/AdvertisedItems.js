@@ -8,8 +8,8 @@ const AdvertisedItems = () => {
     return (
         <div className="2xl:mx-auto 2xl:container px-4 md:px-6 2xl:px-0 py-16 flex justify-center">
             <div className="flex flex-col justify-center items-center">
-                <div className="flex justify-center items-start mb-6">
-                    <p className="text-3xl lg:text-4xl font-semibold leading-9 text-gray-800">
+                <div className="flex justify-center items-start mb-4">
+                    <p className="mb-4 text-3xl lg:text-4xl xl:text-5xl font-bold leading-5 lg:leading-7 xl:leading-9 text-gray-800">
                         Advertised Watches
                     </p>
                 </div>

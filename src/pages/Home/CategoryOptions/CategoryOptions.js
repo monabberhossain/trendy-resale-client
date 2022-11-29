@@ -10,8 +10,8 @@ const CategoryOptions = () => {
             <div className="flex justify-center items-center">
                 <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
                     <div className="flex flex-col justify-center items-center space-y-10">
-                        <div className="flex flex-col justify-center items-center space-y-2">
-                            <h1 className="mb-4 text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 text-gray-800">
+                        <div className="flex flex-col justify-center items-center">
+                            <h1 className="mb-4 text-3xl lg:text-4xl xl:text-5xl font-bold leading-5 lg:leading-7 xl:leading-9 text-gray-800">
                                 Shop By Category
                             </h1>
                         </div>
