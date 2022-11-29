@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import catDigital from "../../../assets/category/catDigitalWatch.png";
 import catBand from "../../../assets/category/catSmartBand.png";
 import catWatch from "../../../assets/category/catSmartWatch.png";
@@ -15,7 +16,8 @@ const CategoryOptions = () => {
                                 Shop By Category
                             </h1>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 w-full">
+                        {/* prev */}
+                        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 w-full">
                             <div className="relative group flex justify-center items-center h-full w-full">
                                 <img
                                     className="object-center object-cover h-full w-full"
@@ -78,7 +80,8 @@ const CategoryOptions = () => {
                             <button className="bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
                                 Digital Watch
                             </button>
-                        </div>
+                        </div> */}
+
                     </div>
                 </div>
             </div>

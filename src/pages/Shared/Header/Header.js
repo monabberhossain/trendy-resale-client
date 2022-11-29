@@ -105,7 +105,7 @@ const Header = () => {
                                 </ul>
                             </li>
                             <li>
-                                <Link className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
+                                <Link to="/blog" className="rounded-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                     Blog
                                 </Link>
                             </li>
@@ -157,7 +157,7 @@ const Header = () => {
                             </ul>
                         </li>
                         <li>
-                            <Link className="rounded-lg text-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
+                            <Link to="/blog" className="rounded-lg text-lg font-semibold text-stone-900 hover:bg-orange-600 hover:text-white">
                                 Blog
                             </Link>
                         </li>
