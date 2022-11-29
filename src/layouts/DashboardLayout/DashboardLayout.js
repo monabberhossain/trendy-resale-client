@@ -14,48 +14,42 @@ const DashboardLayout = () => {
     return (
         <div>
             <Header></Header>
-            <div className="px-[12%] py-16 lg:py-18 drawer drawer-mobile">
+            <div className="px-[2%] lg:px-[12%] py-[72px] drawer drawer-mobile">
                 <input
                     id="dashboard-drawer"
                     type="checkbox"
                     className="drawer-toggle"
                 />
-                <div className="drawer-content p-8">
-                    <Outlet></Outlet>
-                    <label
-                        htmlFor="dashboard-drawer"
-                        className="btn btn-primary drawer-button lg:hidden"
-                    >
-                        Open drawer
-                    </label>
+                <div className="drawer-content mt-4 lg:mt-8 p-4 bg-green-50">
+                    <Outlet></Outlet>                    
                 </div>
-                <div className="drawer-side bg-slate-50">
+                <div className="drawer-side bg-indigo-50 w-60 mt-4 lg:mt-8">
                     <label
                         htmlFor="dashboard-drawer"
                         className="drawer-overlay"
                     ></label>
-                    <ul className="menu mt-4 p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-full text-base-content">
                         <li className="bg-indigo-500 rounded mb-4">
                             <h2 className="text-white font-bold text-xl">
                                 Dashboard
                             </h2>
                         </li>
-                        <li>
+                        <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                             <Link to="/dashboard">My Orders</Link>
                         </li>
                         {(isAdmin || isSeller) && (
                             <>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/addproduct">
                                         Add A Product
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/myproducts">
                                         My Products
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/mybuyers">
                                         My Buyers
                                     </Link>
@@ -64,31 +58,37 @@ const DashboardLayout = () => {
                         )}
                         {isAdmin && (
                             <>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/addcategory">
                                         Add Category
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/categories">
                                         Categories
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="/dashboard/buyers">All Buyers</Link>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
+                                    <Link to="/dashboard/buyers">
+                                        All Buyers
+                                    </Link>
                                 </li>
-                                <li>
-                                    <Link to="/dashboard/sellers">All Sellers</Link>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
+                                    <Link to="/dashboard/sellers">
+                                        All Sellers
+                                    </Link>
                                 </li>
-                                <li>
-                                    <Link to="/dashboard/orders">All Orders</Link>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
+                                    <Link to="/dashboard/orders">
+                                        All Orders
+                                    </Link>
                                 </li>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/products">
                                         Products
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold">
                                     <Link to="/dashboard/allusers">
                                         All Users
                                     </Link>

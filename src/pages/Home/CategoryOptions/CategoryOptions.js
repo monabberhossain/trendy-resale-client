@@ -4,8 +4,29 @@ import catDigital from "../../../assets/category/catDigitalWatch.png";
 import catBand from "../../../assets/category/catSmartBand.png";
 import catWatch from "../../../assets/category/catSmartWatch.png";
 import catMechanical from "../../../assets/category/catMechanicalWatch.png";
+import { useQuery } from "@tanstack/react-query";
+import CategoryOption from "./CategoryOption";
 
 const CategoryOptions = () => {
+    const getAllCategories = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:5000/categories"
+            );
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const { data: categories = [], refetch } = useQuery({
+        queryKey: ["categories"],
+        queryFn: async () => {
+            const res = await fetch("http://localhost:5000/categories");
+            const data = await res.json();
+            return data;
+        },
+    });
+
     return (
         <div className="pb-16 px-8">
             <div className="flex justify-center items-center">
@@ -16,72 +37,11 @@ const CategoryOptions = () => {
                                 Shop By Category
                             </h1>
                         </div>
-                        {/* prev */}
-                        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 w-full">
-                            <div className="relative group flex justify-center items-center h-full w-full">
-                                <img
-                                    className="object-center object-cover h-full w-full"
-                                    src={catMechanical}
-                                    alt=""
-                                />
-                                <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
-                                    Mechanical Watch
-                                </button>
-                            </div>
-                            <div className="flex flex-col space-y-4 md:space-y-8 mt-4 md:mt-0">
-                                <div className="relative group flex justify-center items-center h-full w-full">
-                                    <img
-                                        className="object-center object-cover h-full w-full"
-                                        src={catWatch}
-                                        alt=""
-                                    />
-                                    <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
-                                        Smart Watch
-                                    </button>
-                                </div>
-                                <div className="relative group flex justify-center items-center h-full w-full">
-                                    <img
-                                        className="object-center object-cover h-full w-full"
-                                        src={catBand}
-                                        alt=""
-                                    />
-                                    <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
-                                        Smart Band
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="relative group justify-center items-center h-full w-full hidden lg:flex">
-                                <img
-                                    className="object-center object-cover h-full w-full"
-                                    src={catDigital}
-                                    alt=""
-                                />
-                                <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
-                                    Digital Watch
-                                </button>
-                            </div>
-                            <div className="relative group flex justify-center items-center h-full w-full mt-4 md:hidden md:mt-8 lg:hidden">
-                                <img
-                                    className="object-center object-cover h-full w-full"
-                                    src={catDigital}
-                                    alt=""
-                                />
-                                <button className="bottom-4 z-10 absolute text-xl font-bold leading-none py-3 w-36 bg-white text-orange-600">
-                                    Digital Watch
-                                </button>
-                            </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                            {
+                                categories.map(category => <CategoryOption key={category._id} category={category}></CategoryOption>)
+                            }
                         </div>
-                        <div className="relative group hidden md:flex justify-center items-center h-full w-full mt-4 md:mt-8 lg:hidden">
-                            <img
-                                className="object-center object-cover h-full w-full"
-                                src={catDigital}
-                                alt=""
-                            />
-                            <button className="bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                                Digital Watch
-                            </button>
-                        </div> */}
-
                     </div>
                 </div>
             </div>

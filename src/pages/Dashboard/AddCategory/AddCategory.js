@@ -49,8 +49,20 @@ const AddCategory = () => {
 
     return (
         <div className="">
-            <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2 mb-4">
+            <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2 mb-4 flex justify-between">
                 Add A Category
+                <label
+                    htmlFor="dashboard-drawer"
+                    className="btn btn-primary drawer-button lg:hidden"
+                >
+                    Open drawer
+                </label>
+                <label
+                    htmlFor="dashboard-drawer"
+                    className="btn btn-primary drawer-button lg:hidden"
+                >
+                    Open drawer
+                </label>
             </h2>
             <div className="form-control w-full max-w-xs bg-base-100 rounded-xl shadow-xl p-8">
                 <form onSubmit={handleSubmit(handleAddCategory)}>
