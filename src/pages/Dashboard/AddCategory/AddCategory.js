@@ -57,12 +57,6 @@ const AddCategory = () => {
                 >
                     Open drawer
                 </label>
-                <label
-                    htmlFor="dashboard-drawer"
-                    className="btn btn-primary drawer-button lg:hidden"
-                >
-                    Open drawer
-                </label>
             </h2>
             <div className="form-control w-full max-w-xs bg-base-100 rounded-xl shadow-xl p-8">
                 <form onSubmit={handleSubmit(handleAddCategory)}>
