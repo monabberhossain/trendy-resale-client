@@ -8,7 +8,9 @@ const Products = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products`);
+            const res = await fetch(
+                `https://y-black-alpha.vercel.app/products`
+            );
             const data = await res.json();
             console.log(data);
             return data;
@@ -16,7 +18,7 @@ const Products = () => {
     });
 
     // const handleMakeAdmin = (id) => {
-    //     fetch(`http://localhost:5000/users/admin/${id}`, {
+    //     fetch(`https://y-black-alpha.vercel.app/users/admin/${id}`, {
     //         method: "PUT",
     //         headers: {
     //             authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -32,7 +34,7 @@ const Products = () => {
     // };
 
     const handleDeleteProduct = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/products/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

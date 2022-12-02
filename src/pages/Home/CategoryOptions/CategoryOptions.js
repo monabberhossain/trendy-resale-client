@@ -11,7 +11,7 @@ const CategoryOptions = () => {
     const getAllCategories = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:5000/categories"
+                "https://y-black-alpha.vercel.app/categories"
             );
             console.log(response);
         } catch (error) {
@@ -21,7 +21,9 @@ const CategoryOptions = () => {
     const { data: categories = [], refetch } = useQuery({
         queryKey: ["categories"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/categories");
+            const res = await fetch(
+                "https://y-black-alpha.vercel.app/categories"
+            );
             const data = await res.json();
             return data;
         },
@@ -38,9 +40,12 @@ const CategoryOptions = () => {
                             </h1>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-                            {
-                                categories.map(category => <CategoryOption key={category._id} category={category}></CategoryOption>)
-                            }
+                            {categories.map((category) => (
+                                <CategoryOption
+                                    key={category._id}
+                                    category={category}
+                                ></CategoryOption>
+                            ))}
                         </div>
                     </div>
                 </div>

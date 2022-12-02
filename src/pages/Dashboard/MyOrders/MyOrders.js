@@ -10,7 +10,7 @@ const MyOrders = () => {
         queryKey: ["bookedproducts", user?.email],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/bookedproducts/${user.email}`
+                `https://y-black-alpha.vercel.app/bookedproducts/${user.email}`
             );
             const data = await res.json();
             console.log(data);
@@ -19,7 +19,7 @@ const MyOrders = () => {
     });
 
     const handleDeleteOrder = (id) => {
-        fetch(`http://localhost:5000/bookedproducts/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/bookedproducts/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

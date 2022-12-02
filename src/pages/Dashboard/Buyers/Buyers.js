@@ -6,14 +6,14 @@ const Buyers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/buyers");
+            const res = await fetch("https://y-black-alpha.vercel.app/buyers");
             const data = await res.json();
             return data;
         },
     });
 
     const handleMakeAdmin = (id) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/users/admin/${id}`, {
             method: "PUT",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -29,7 +29,7 @@ const Buyers = () => {
     };
 
     const handleDeleteUser = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/users/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

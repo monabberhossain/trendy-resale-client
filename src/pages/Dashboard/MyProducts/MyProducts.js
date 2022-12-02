@@ -9,7 +9,7 @@ const MyProducts = () => {
         queryKey: ["myproducts"],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/myproducts/${user.email}`
+                `https://y-black-alpha.vercel.app/myproducts/${user.email}`
             );
             const data = await res.json();
             console.log(data);
@@ -18,7 +18,7 @@ const MyProducts = () => {
     });
 
     // const handleMakeAdmin = (id) => {
-    //     fetch(`http://localhost:5000/users/admin/${id}`, {
+    //     fetch(`https://y-black-alpha.vercel.app/users/admin/${id}`, {
     //         method: "PUT",
     //         headers: {
     //             authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -34,7 +34,7 @@ const MyProducts = () => {
     // };
 
     const handleDeleteProduct = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/products/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

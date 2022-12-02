@@ -152,7 +152,9 @@ const router = createBrowserRouter([
                 path: "/dashboard/payment/:id",
                 element: <Payment></Payment>,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/bookedProducts/${params.id}`),
+                    fetch(
+                        `https://y-black-alpha.vercel.app/bookedProducts/${params.id}`
+                    ),
             },
         ],
     },

@@ -1,22 +1,26 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import Spinner from '../Shared/Spinner/Spinner';
-import BookingModal from './BookingModal';
-import CategoryProduct from './CategoryProduct';
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import Spinner from "../Shared/Spinner/Spinner";
+import BookingModal from "./BookingModal";
+import CategoryProduct from "./CategoryProduct";
 
 const CategoryProducts = () => {
     const url = window.location.href;
-    const section = url.split('/');
+    const section = url.split("/");
     const id = section[4];
 
     const [product, setProduct] = useState(null);
 
     const {
-        data: categoryProducts = [], refetch, isLoading
+        data: categoryProducts = [],
+        refetch,
+        isLoading,
     } = useQuery({
         queryKey: ["categoryProducts"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categories/${id}`);
+            const res = await fetch(
+                `https://y-black-alpha.vercel.app/categories/${id}`
+            );
             const data = await res.json();
             return data;
         },

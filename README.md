@@ -1,6 +1,6 @@
 # Trendy Resale
 
-Live Website Link: [Code Tutor](https://code-tutor-cfa0e.web.app/).
+Live Website Link: [Trendy Resale](https://trendy-resale.web.app/).
 
 adminEmail: <m@z.com>
 

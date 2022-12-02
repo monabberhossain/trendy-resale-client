@@ -44,13 +44,13 @@ const Login = () => {
                 console.log(error.message);
                 setLoginError(error.message);
             });
-    };    
+    };
 
     const handleSignInWithGoogle = () => {
         setLoginError("");
         loginWithGoogle(googleProvider)
             .then((result) => {
-                const user = result.user;                
+                const user = result.user;
                 setLoginUserEmail(user.email);
                 const role = "Buyer";
                 const status = "Non-verified";
@@ -71,7 +71,7 @@ const Login = () => {
     const saveUserToDB = (name, role, status, email) => {
         const user = { name, role, status, email };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://y-black-alpha.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

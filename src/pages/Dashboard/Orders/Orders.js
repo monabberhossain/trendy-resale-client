@@ -1,19 +1,21 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import toast from 'react-hot-toast';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import toast from "react-hot-toast";
 
 const Orders = () => {
     const { data: bookedProducts = [], refetch } = useQuery({
         queryKey: ["bookedproducts"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/bookedproducts");
+            const res = await fetch(
+                "https://y-black-alpha.vercel.app/bookedproducts"
+            );
             const data = await res.json();
             return data;
         },
     });
 
     const handleVerifySeller = (id) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/users/admin/${id}`, {
             method: "PUT",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -29,7 +31,7 @@ const Orders = () => {
     };
 
     const handleDeleteUser = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://y-black-alpha.vercel.app/users/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

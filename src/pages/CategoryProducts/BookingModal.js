@@ -3,15 +3,8 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ product, setProduct, refetch }) => {
-    const {
-        _id,
-        name,
-        price,
-        image,
-        purchasedDate,
-        seller,
-        location,
-    } = product;
+    const { _id, name, price, image, purchasedDate, seller, location } =
+        product;
     console.log(product);
     const { user } = useContext(AuthContext);
     const [districts, setDistricts] = useState([]);
@@ -44,7 +37,7 @@ const BookingModal = ({ product, setProduct, refetch }) => {
             meetingLocation,
         };
 
-        fetch("http://localhost:5000/bookedProducts", {
+        fetch("https://y-black-alpha.vercel.app/bookedProducts", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -36,11 +36,16 @@ const SignUp = () => {
                 const userProfile = {
                     displayName: data.name,
                     role: data.role,
-                    status: "Non-verified"
+                    status: "Non-verified",
                 };
                 updateUserProfile(userProfile)
                     .then(() => {
-                        saveUserToDB(data.name, data.role, data.status, data.email);
+                        saveUserToDB(
+                            data.name,
+                            data.role,
+                            data.status,
+                            data.email
+                        );
                     })
                     .catch((error) => console.log(error));
             })
@@ -69,7 +74,7 @@ const SignUp = () => {
     const saveUserToDB = (name, role, status, email) => {
         const user = { name, role, status, email };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://y-black-alpha.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
