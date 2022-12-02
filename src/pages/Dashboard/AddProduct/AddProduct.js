@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -13,22 +13,19 @@ const AddProduct = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-    
+
     const { user } = useContext(AuthContext);
+    const [districts, setDistricts] = useState([]);
 
     const navigate = useNavigate();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
-    const { data: districts = [] } = useQuery({
-        queryKey: ["districts"],
-        queryFn: async () => {
-            const res = await fetch(
-                "https://bdapis.herokuapp.com/api/v1.1/districts"
-            );
-            const data = await res.json();
-            return data.data;
-        },
-    });
+    const url = "/districts.json";
+    useEffect(() => {
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => setDistricts(data));
+    }, []);
 
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ["categories"],
@@ -39,7 +36,8 @@ const AddProduct = () => {
         },
     });
 
-    const handleAddProduct = (data) => {  
+    const handleAddProduct = (data) => {
+        const currentTime = new Date().toLocaleString();
         const image = data.image[0];
         const formData = new FormData();
         formData.append("image", image);
@@ -55,17 +53,21 @@ const AddProduct = () => {
                     email: user.email,
                     name: data.productName,
                     category: data.category,
+                    categoryId: "123",
+                    brand: data.brand,
                     image: imgData.data.url,
                     price: data.price,
                     marketPrice: data.marketPrice,
+                    status: "Available",
                     condition: data.condition,
                     purchasedDate: data.purchasedDate,
+                    postedTime: currentTime,
                     mobile: data.mobileNumber,
                     location: data.location,
-                    description: data.description
+                    description: data.description,
                 };
 
-                fetch("https://localhost:5000/products", {
+                fetch("http://localhost:5000/products", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -86,7 +88,7 @@ const AddProduct = () => {
     if (isLoading) {
         return <Spinner></Spinner>;
     }
-    
+
     return (
         <div>
             <h2 className="text-3xl font-semibold bg-indigo-300 rounded p-2 mb-4 flex justify-between">
@@ -146,6 +148,25 @@ const AddProduct = () => {
                             </label>
                         )}
                     </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Product Brand</span>
+                        </label>
+                        <input
+                            type="text"
+                            className="input input-bordered w-full"
+                            {...register("brand", {
+                                required: "Brand name is required",
+                            })}
+                        />
+                        {errors.brand && (
+                            <label className="label">
+                                <span className=" label-text text-red-600">
+                                    {errors.brand?.message}
+                                </span>
+                            </label>
+                        )}
+                    </div>
                     <div className="form-control w-full mt-2">
                         <label className="label">
                             <span className="label-text">
@@ -194,7 +215,7 @@ const AddProduct = () => {
                             type="text"
                             className="input input-bordered w-full"
                             {...register("marketPrice", {
-                                required: "Price is required",
+                                required: "Market price is required",
                             })}
                         />
                         {errors.marketPrice && (
@@ -281,8 +302,8 @@ const AddProduct = () => {
                             className="select select-bordered w-full max-w-xs"
                         >
                             {districts.map((district) => (
-                                <option value={district.district}>
-                                    {district.district}
+                                <option value={district.name}>
+                                    {district.name}
                                 </option>
                             ))}
                         </select>
@@ -303,21 +324,21 @@ const AddProduct = () => {
                         <textarea
                             type="text"
                             className="input input-bordered w-full"
-                            {...register("marketPrice", {
+                            {...register("description", {
                                 required: "Price is required",
                             })}
                         />
-                        {errors.marketPrice && (
+                        {errors.description && (
                             <label className="label">
                                 <span className=" label-text text-red-600">
-                                    {errors.marketPrice?.message}
+                                    {errors.description?.message}
                                 </span>
                             </label>
                         )}
                     </div>
                     <input
                         className="btn btn-accent w-full mt-6"
-                        value="Add Category"
+                        value="Add Product"
                         type="submit"
                     />
                 </form>

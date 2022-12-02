@@ -53,10 +53,11 @@ const Login = () => {
                 const user = result.user;                
                 setLoginUserEmail(user.email);
                 const role = "Buyer";
+                const status = "Non-verified";
                 if (savedUser) {
                     toast.message("Email is in use.");
                 } else {
-                    saveUserToDB(user.displayName, role, user.email);
+                    saveUserToDB(user.displayName, role, status, user.email);
                     setSavedUser(user.email);
                 }
                 console.log(user);
@@ -67,8 +68,8 @@ const Login = () => {
             });
     };
 
-    const saveUserToDB = (name, role, email) => {
-        const user = { name, role, email };
+    const saveUserToDB = (name, role, status, email) => {
+        const user = { name, role, status, email };
 
         fetch("http://localhost:5000/users", {
             method: "POST",

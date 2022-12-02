@@ -8,7 +8,6 @@ import Header from "../../pages/Shared/Header/Header";
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email);
     return (
@@ -23,7 +22,7 @@ const DashboardLayout = () => {
                 <div className="drawer-content mt-4 lg:mt-8 p-4 bg-green-50">
                     <Outlet></Outlet>
                 </div>
-                <div className="drawer-side bg-indigo-50 w-60 mt-4 lg:mt-8">
+                <div className="drawer-side bg-transparent lg:bg-indigo-50 w-60 mt-4 lg:mt-8">
                     <label
                         htmlFor="dashboard-drawer"
                         className="drawer-overlay"
@@ -37,7 +36,7 @@ const DashboardLayout = () => {
                         <li className="bg-indigo-200 rounded-lg hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold mb-2">
                             <Link to="/dashboard">My Orders</Link>
                         </li>
-                        {(isAdmin || isSeller) && (
+                        {(isSeller) && (
                             <>
                                 <li className="bg-indigo-200 rounded-lg hover:bg-indigo-500 hover:text-white hover:rounded-lg font-semibold mb-2">
                                     <Link to="/dashboard/addproduct">

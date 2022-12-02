@@ -12,7 +12,7 @@ const CategoryOption = ({ category }) => {
                         src={image}
                         alt={name}
                     />
-                    <button className="bottom-2 right-4 z-10 absolute text-xl font-bold leading-none py-3 w-60 bg-white text-orange-600">
+                    <button className="bottom-2 right-4 z-10 absolute text-xl font-bold leading-none py-3 w-60 bg-white text-orange-600"> 
                         {name}
                     </button>
                 </Link>

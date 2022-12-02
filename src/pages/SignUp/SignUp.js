@@ -36,10 +36,11 @@ const SignUp = () => {
                 const userProfile = {
                     displayName: data.name,
                     role: data.role,
+                    status: "Non-verified"
                 };
                 updateUserProfile(userProfile)
                     .then(() => {
-                        saveUserToDB(data.name, data.role, data.email);
+                        saveUserToDB(data.name, data.role, data.status, data.email);
                     })
                     .catch((error) => console.log(error));
             })
@@ -55,7 +56,8 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 const role = "Buyer";
-                saveUserToDB(user.displayName, role, user.email);
+                const status = "Non-verified";
+                saveUserToDB(user.displayName, role, status, user.email);
                 console.log(user);
             })
             .catch((error) => {
@@ -64,8 +66,8 @@ const SignUp = () => {
             });
     };
 
-    const saveUserToDB = (name, role, email) => {
-        const user = { name, role, email };
+    const saveUserToDB = (name, role, status, email) => {
+        const user = { name, role, status, email };
 
         fetch("http://localhost:5000/users", {
             method: "POST",

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaAppStore, FaArrowRight, FaBriefcase, FaDesktop, FaGraduationCap } from "react-icons/fa";
+import { FaAppStore, FaArrowRight, FaDesktop, FaGraduationCap } from "react-icons/fa";
 
 const Resources = () => {
     return (

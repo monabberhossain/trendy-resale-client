@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Main from "../../layouts/Main/Main";
 import Blog from "../../pages/Blog/Blog";
+import CategoryProducts from "../../pages/CategoryProducts/CategoryProducts";
 import AddCategory from "../../pages/Dashboard/AddCategory/AddCategory";
 import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
 import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
@@ -11,8 +12,10 @@ import MyBuyers from "../../pages/Dashboard/MyBuyers/MyBuyers";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import Orders from "../../pages/Dashboard/Orders/Orders";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 import Products from "../../pages/Dashboard/Products/Products";
 import Sellers from "../../pages/Dashboard/Sellers/Sellers";
+import Error from "../../pages/Error/Error";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
@@ -24,6 +27,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "/",
@@ -41,6 +45,14 @@ const router = createBrowserRouter([
                 path: "/blog",
                 element: <Blog></Blog>,
             },
+            {
+                path: "/categories/:id",
+                element: (
+                    <PrivateRoutes>
+                        <CategoryProducts></CategoryProducts>
+                    </PrivateRoutes>
+                ),
+            },
         ],
     },
     {
@@ -50,6 +62,7 @@ const router = createBrowserRouter([
                 <DashboardLayout></DashboardLayout>
             </PrivateRoutes>
         ),
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "/dashboard",
@@ -134,6 +147,12 @@ const router = createBrowserRouter([
                         <AllUsers></AllUsers>
                     </AdminRoutes>
                 ),
+            },
+            {
+                path: "/dashboard/payment/:id",
+                element: <Payment></Payment>,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/bookedProducts/${params.id}`),
             },
         ],
     },

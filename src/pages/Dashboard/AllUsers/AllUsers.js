@@ -12,7 +12,7 @@ const AllUsers = () => {
         },
     });
 
-    const handleMakeAdmin = (id) => {
+    const handleVerifySeller = (id) => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
             method: "PUT",
             headers: {
@@ -22,7 +22,7 @@ const AllUsers = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount > 0) {
-                    toast.success("Admin Authorized Successfully!");
+                    toast.success("Seller Verified Successfully!");
                     refetch();
                 }
             });
@@ -49,7 +49,7 @@ const AllUsers = () => {
                 All Users
                 <label
                     htmlFor="dashboard-drawer"
-                    className="btn btn-primary drawer-button lg:hidden"
+                    className="btn btn-primary btn-sm md:btn-md lg:btn-lg drawer-button bg-indigo-500 text-white lg:hidden"
                 >
                     Open drawer
                 </label>
@@ -62,7 +62,8 @@ const AllUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Authorization</th>
+                            <th>Status</th>
+                            <th>Verification</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -74,16 +75,29 @@ const AllUsers = () => {
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
                                 <td>
-                                    {user?.role !== "Admin" && (
-                                        <button
-                                            onClick={() =>
-                                                handleMakeAdmin(user._id)
-                                            }
-                                            className="btn btn-xs text-white btn-secondary"
-                                        >
-                                            Make Admin
-                                        </button>
+                                    {user?.status === "Verified" && (
+                                        <span className="bg-green-200 px-1 rounded-md font-bold">
+                                            {user.status}
+                                        </span>
                                     )}
+                                    {user?.status === "Non-verified" && (
+                                        <span className="bg-red-200 px-1 rounded-md font-bold">
+                                            {user.status}
+                                        </span>
+                                    )}
+                                </td>
+                                <td>
+                                    {user?.role === "Seller" &&
+                                        user?.status !== "Verified" && (
+                                            <button
+                                                onClick={() =>
+                                                    handleVerifySeller(user._id)
+                                                }
+                                                className="btn btn-xs text-white btn-secondary"
+                                            >
+                                                Verify
+                                            </button>
+                                        )}
                                 </td>
                                 <td>
                                     <button
